@@ -1,0 +1,13 @@
+{
+  "name": "scalex-ai-ecommerce-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open-source browser-based ecommerce calculator toolkit",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
