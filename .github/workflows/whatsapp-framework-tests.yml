@@ -1,0 +1,23 @@
+name: WhatsApp Framework Tests
+on:
+  pull_request:
+    paths:
+      - "whatsapp-framework/**"
+      - ".github/workflows/whatsapp-framework-tests.yml"
+  push:
+    branches: [main]
+    paths:
+      - "whatsapp-framework/**"
+      - ".github/workflows/whatsapp-framework-tests.yml"
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run deterministic toolkit tests
+        run: cd whatsapp-framework && npm test
