@@ -14,10 +14,10 @@
     const src=new URLSearchParams(location.search),d={};
     keys.forEach(k=>{const v=src.get(k);if(v)d[k]=v.slice(0,250);});return d;
   }
-  function whastappLink(phone,message){
+  function whatsappLink(phone,message){
     const digits=String(phone).replace(/\D/g,'');
     if(digits.length<8||digits.length>15)throw Error('Invalid E.164-like phone number');
     return 'https://wa.me/'+digits+'?text='+encodeURIComponent(String(message));
   }
-  g.ScaleXGHL={root,safeURL,currency,storageKey,queryParams,whatsappLink:whastappLink,version:'0.1.0'};
+  g.ScaleXGHL={root,safeURL,currency,storageKey,queryParams,whatsappLink,version:'0.1.0'};
 })(window);
