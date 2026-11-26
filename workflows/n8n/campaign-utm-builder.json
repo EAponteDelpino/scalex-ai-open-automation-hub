@@ -21,7 +21,7 @@
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "const d = $input.first().json.body ?? $input.first().json;\nconst base=String(d.url||'');let u;try{u=new URL(base);for(const k of ['utm_source','utm_medium','utm_campaign'])if(d[k])u.searchParams.set(k,String(d[k]));const output = {url:u.toString()};}catch(e){return {error:'valid_absolute_url_required'};}\n"
+        "jsCode": "const d = $input.first().json.body ?? $input.first().json;\nlet output;\ntry {\n  const u = new URL(String(d.url || ''));\n  for (const key of ['utm_source', 'utm_medium', 'utm_campaign']) {\n    if (d[key]) u.searchParams.set(key, String(d[key]));\n  }\n  output = { url: u.toString() };\n} catch (error) {\n  output = { error: 'valid_absolute_url_required' };\n}\nreturn [{ json: output }];"
       },
       "id": "campaign-utm-builder-code",
       "name": "Transform",
