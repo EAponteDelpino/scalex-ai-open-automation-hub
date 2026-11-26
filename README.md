@@ -2,7 +2,7 @@
 
 **Open-source business automation starter kit · Kit de automatización empresarial de código abierto**
 
-[Español](docs/README.es.md) · [English](docs/README.en.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
+[Español](docs/README.es.md) · [English](docs/README.en.md) · [GHL Developer Toolkit](ghl-toolkit/README.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
 
 A practical library of **30 importable n8n webhook workflows** and **10 configurable AI-agent role definitions**, focused on ecommerce, marketing, lead management, support and WhatsApp consent. Created by **ScaleX AI**.
 
@@ -27,7 +27,7 @@ Each example has a Webhook → Code → Respond to Webhook chain. The Code node 
 | WhatsApp | consent checks, template previews (**no outbound messages**) |
 | Support | triage, urgency and FAQ lookups |
 
-See [full catalog](docs/CATALOG.md) and [AI agents](agents/README.md).
+See [full catalog](docs/CATALOG.md), [AI agents](agents/README.md), and the [15-module GHL toolkit](ghl-toolkit/docs/COMPONENTS.md).
 
 ## Safety and privacy
 
