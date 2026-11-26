@@ -1,0 +1,9 @@
+{
+  "event": "lead.created",
+  "contact": {
+    "name": "Example Lead",
+    "email": "demo@example.com"
+  },
+  "source": "landing",
+  "consent": true
+}

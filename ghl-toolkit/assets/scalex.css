@@ -1,0 +1,14 @@
+/* ScaleX AI GHL Toolkit — scoped, themeable, accessible styles */
+.sx-widget,.sx-widget *{box-sizing:border-box}
+.sx-widget{--sx-primary:#1479e6;--sx-accent:#06b6d4;--sx-ink:#17243b;--sx-border:#ced8e3;--sx-bg:#fff;--sx-radius:12px;font:inherit;color:var(--sx-ink)}
+.sx-widget button,.sx-widget input,.sx-widget select{font:inherit}
+.sx-widget button{cursor:pointer}
+.sx-widget :focus-visible{outline:3px solid var(--sx-accent);outline-offset:3px}
+.sx-card{border:1px solid var(--sx-border);background:var(--sx-bg);border-radius:var(--sx-radius);padding:1rem}
+.sx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1rem}
+.sx-btn{background:var(--sx-primary);color:#fff;border:0;border-radius:9px;padding:.75rem 1.15rem;display:inline-block;text-decoration:none;font-weight:700}
+.sx-btn[disabled]{opacity:.5;cursor:not-allowed}
+.sx-field{display:grid;gap:.4rem;margin:.5rem 0}
+.sx-field input,.sx-field select{width:100%;padding:.7rem;border:1px solid var(--sx-border);border-radius:8px}
+.sx-muted{color:#53647a;font-size:.925rem}
+@media (prefers-reduced-motion:reduce){.sx-widget *{animation:none!important;transition:none!important}}
