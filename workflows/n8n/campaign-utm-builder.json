@@ -1,0 +1,81 @@
+{
+  "name": "ScaleX AI | Campaign UTM builder",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "scalex-demo/campaign-utm-builder",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "campaign-utm-builder-webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        220,
+        300
+      ],
+      "webhookId": "scalex-campaign-utm-builder"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const d = $input.first().json.body ?? $input.first().json;\nconst base=String(d.url||'');let u;try{u=new URL(base);for(const k of ['utm_source','utm_medium','utm_campaign'])if(d[k])u.searchParams.set(k,String(d[k]));const output = {url:u.toString()};}catch(e){return {error:'valid_absolute_url_required'};}\n"
+      },
+      "id": "campaign-utm-builder-code",
+      "name": "Transform",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "campaign-utm-builder-response",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        680,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Transform",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "pinData": {},
+  "tags": []
+}
