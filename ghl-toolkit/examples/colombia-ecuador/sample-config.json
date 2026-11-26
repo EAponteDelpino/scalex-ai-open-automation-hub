@@ -1,0 +1,18 @@
+{
+  "countries": {
+    "CO": {
+      "currency": "COP",
+      "locale": "es-CO",
+      "samplePrice": 99000,
+      "checkoutUrl": "https://example.com/checkout-colombia"
+    },
+    "EC": {
+      "currency": "USD",
+      "locale": "es-EC",
+      "samplePrice": 29.9,
+      "checkoutUrl": "https://example.com/checkout-ecuador"
+    }
+  },
+  "whatsappPhone": "573001234567",
+  "mode": "demo-only"
+}
