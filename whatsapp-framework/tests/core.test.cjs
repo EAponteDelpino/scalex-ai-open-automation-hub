@@ -1,0 +1,14 @@
+const test=require("node:test"),assert=require("node:assert/strict"),fs=require("node:fs"),vm=require("node:vm"),path=require("node:path");
+const ctx={};vm.createContext(ctx);vm.runInContext(fs.readFileSync(path.join(__dirname,"../src/core.js"),"utf8"),ctx);
+const a=ctx.ScaleXWhatsApp;
+test("ten tools",()=>assert.equal(a.tools.length,10));
+test("links encode query and never send",()=>{const r=a.calculate("whatsapp-link",{phone:"+57 300 123 4567",message:"Hola & café"});assert.match(r.url,/^https:\/\/wa\.me\/573001234567\?text=/);assert.equal(r.sent,false);assert.match(decodeURIComponent(r.url),/Hola & café/);});
+test("phone validation",()=>{assert.throws(()=>a.waLink("123","hello"),/international/);});
+test("lead scoring deterministic",()=>{const r=a.calculate("lead-scoring",{intent:5,budgetFit:5,urgency:5});assert.equal(r.score,100);assert.equal(r.segment,"alta prioridad");});
+test("opt-out overrides all approvals",()=>{const d={optIn:true,optOut:true,approvedTemplate:true,withinServiceWindow:true};assert.equal(a.consent(d).marketingAllowed,false);assert.equal(a.calculate("lead-recovery",{...d,product:"X"}).eligible,false);});
+test("consent defaults prevent outbound marketing",()=>{const x=a.calculate("follow-up-builder",{days:2,topic:"course",optIn:false,optOut:false,approvedTemplate:false});assert.equal(x.eligible,false);assert.equal(x.automaticSend,false);});
+test("objections cannot invent catalog",()=>{const x=a.calculate("objection-handler",{type:"price"});assert.match(x.recommendation,/Evita inventar/);assert.throws(()=>a.calculate("objection-handler",{type:"unknown"}));});
+test("knowledge base requires facts",()=>{assert.throws(()=>a.calculate("knowledge-base",{question:"",answer:"something"}));assert.equal(a.calculate("knowledge-base",{question:"Q",answer:"A",source:"S"}).status,"draft");});
+test("sales simulator no send",()=>assert.equal(a.calculate("sales-simulator",{message:"¿Precio?"}).sent,false));
+test("conversation builder returns branching nodes",()=>assert.equal(a.calculate("conversation-builder",{product:"Test"}).nodes.length,4));
+test("message template is draft",()=>assert.equal(a.calculate("message-template",{title:"Hi",benefit:"Product facts",cta:"More?"}).approvalNeeded,true));
