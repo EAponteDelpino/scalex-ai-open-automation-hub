@@ -2,7 +2,7 @@
 
 **Open-source business automation starter kit · Kit de automatización empresarial de código abierto**
 
-[Español](docs/README.es.md) · [English](docs/README.en.md) · [GHL Developer Toolkit](ghl-toolkit/README.md) · [Ecommerce Open Toolkit](ecommerce-toolkit/README.md) · [WhatsApp Sales Framework](whatsapp-framework/README.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
+[Español](docs/README.es.md) · [English](docs/README.en.md) · [GHL Developer Toolkit](ghl-toolkit/README.md) · [Ecommerce Open Toolkit](ecommerce-toolkit/README.md) · [WhatsApp Sales Framework](whatsapp-framework/README.md) · [AI Agent Builder Toolkit](ai-agent-builder/README.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
 
 A practical library of **30 importable n8n webhook workflows** and **10 configurable AI-agent role definitions**, focused on ecommerce, marketing, lead management, support and WhatsApp consent. Created by **ScaleX AI**.
 
